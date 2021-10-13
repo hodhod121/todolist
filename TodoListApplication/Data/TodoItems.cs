@@ -30,7 +30,7 @@ namespace TodoListApplication.Data
             Console.WriteLine("Not found");
             return null;
         }
-        public Todo[] Create(int id, string description, bool done,Person assignee)
+        public Todo Create(int id, string description, bool done,Person assignee)
         {
             TodoSequencer ts = new TodoSequencer();
             Todo todo = new Todo(ts.NextTodoId(), description, done,assignee);
@@ -40,7 +40,8 @@ namespace TodoListApplication.Data
                 newArray[i] = todoArray[i];
             }
             newArray[Size()] = todo;
-            return newArray;
+            todoArray = newArray;
+            return todo;
         }
         public void Clear()
         {
@@ -114,7 +115,35 @@ namespace TodoListApplication.Data
                     newTodo[i] = todoArray[i];                  
                 }
             }
-            return newTodo;
+            if (newTodo.Length > 0)
+            {
+                return newTodo;
+            }
+            else
+            {
+                Console.WriteLine("not found");
+                return null;
+            }           
+        }
+        public Todo[] RemoveTodoFromTodoArray(Todo todo)
+        {
+            Todo[] newTodo = new Todo[Size()-1];            
+            for (int i = 0; i < Size(); i++)
+            {
+                if (todoArray[i] != todo)
+                {
+                    newTodo[i] = todoArray[i];
+                }
+            }
+            if (newTodo.Length > 0)
+            {
+                return newTodo;
+            }
+            else
+            {
+                Console.WriteLine("Not found");
+                return null;
+            }
         }
     }
 }

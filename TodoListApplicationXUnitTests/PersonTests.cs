@@ -7,16 +7,17 @@ using Xunit;
 using TodoListApplication.Model;
 
 
-namespace TodoListApplicationXUnitTests
+namespace TodoListApplicationXUnit
 {   
+
     public class PersonTests
-    {
-        private Person person1;
-        private Person person2;
-        private Person person3;      
+    {              
+         public Person person1;
+         public Person person2;
+         public Person person3;      
         public PersonTests()
         {
-            person1 = new Person(1, "Ali", "Ezadkhaha");
+            person1 = new Person(1,"Ali","Ezadkhaha");
             person2 = new Person(4, " ", " ");                    
             person3 = new Person(5, null, null);          
         }

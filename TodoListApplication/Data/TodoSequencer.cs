@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TodoListApplication.Data
 {
-    public class TodoSequencer
+     class TodoSequencer
     {
         public static int todoId { get; set; }
         public int NextTodoId()
         {
-            return todoId++;
+            return ++todoId;
         }
         public static int Reset()
         {

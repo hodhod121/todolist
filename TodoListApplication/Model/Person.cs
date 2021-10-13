@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TodoListApplication.Model
 {
-    public class Person
+      public class Person
     {
-        public Person(int personId, string firstName, string lastName)
+        public  Person(int personId, string firstName, string lastName)
         {
             this.personId = personId;
             FirstName = firstName;

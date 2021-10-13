@@ -8,10 +8,15 @@ using TodoListApplication.Model;
 
 namespace TodoListApplication.Data
 {
-    public class People
+     public class People
     {
        
         private static Person[] array = new Person[0];
+
+        public People(Person[] array)
+        {
+        }
+
         public int Size()
         {
             return array.Length;
@@ -31,7 +36,7 @@ namespace TodoListApplication.Data
             }
             return null;
         }
-        public Person[] Create(int id,string first_name,string last_name)
+        public Person Create(int id,string first_name,string last_name)
         {
             PersonSequencer ps = new PersonSequencer();
             Person person=new Person(ps.nextPersonId(), first_name, last_name);
@@ -41,11 +46,32 @@ namespace TodoListApplication.Data
                 newArray[i] = array[i];
             }
             newArray[array.Length] = person;
-            return newArray;
+            array = newArray;
+            return person;
         }
         public void Clear()
         {
             Array.Clear(array, 0, array.Length);           
+        }
+        public Person[] RemovePersonFromPersonArray(Person person)
+        {
+            Person[] newPerson = new Person[array.Length - 1];
+            for (int i = 0; i < Size(); i++)
+            {
+                if (array[i] != person)
+                {
+                    newPerson[i] = array[i];
+                }
+            }
+            if (newPerson.Length > 0)
+            {
+                return newPerson;
+            }
+            else
+            {
+                Console.WriteLine("Not found");
+                return null;
+            }
         }
     }
 }

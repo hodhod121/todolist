@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TodoListApplication.Data
 {
-    public class PersonSequencer
+     class PersonSequencer
     {
         public static int personId { get; set; }
         public int nextPersonId()
         {
-            return personId++;
+            return ++personId;
         }
         public static int reset()
         {

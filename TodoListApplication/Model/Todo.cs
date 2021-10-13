@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoListApplication.Model
 {
-    public class Todo
+     public class Todo
     {
         public Todo(int todoId, string description, bool done, Person assignee)
         {
