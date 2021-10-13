@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TodoListApplication.Data
 {
-     class TodoSequencer
+     public class TodoSequencer
     {
+
         public static int todoId { get; set; }
         public int NextTodoId()
         {

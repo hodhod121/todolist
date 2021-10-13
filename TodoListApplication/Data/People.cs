@@ -8,10 +8,10 @@ using TodoListApplication.Model;
 
 namespace TodoListApplication.Data
 {
-     public class People
+      public class People
     {
        
-        private static Person[] array = new Person[0];
+        private static Person[] personArray = new Person[0];
 
         public People(Person[] array)
         {
@@ -19,19 +19,19 @@ namespace TodoListApplication.Data
 
         public int Size()
         {
-            return array.Length;
+            return personArray.Length;
         }
         public Person[] FindAll()
         {
-            return array;
+            return personArray;
         }
         public Person FindById(int personId)
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < personArray.Length; i++)
             {
-                if (array[i].personId == personId)
+                if (personArray[i].personId == personId)
                 {
-                    return array[i];                  
+                    return personArray[i];                  
                 }
             }
             return null;
@@ -40,27 +40,27 @@ namespace TodoListApplication.Data
         {
             PersonSequencer ps = new PersonSequencer();
             Person person=new Person(ps.nextPersonId(), first_name, last_name);
-            Person[] newArray=new Person[array.Length+1];
-            for(int i= 0; i<array.Length; i++)
+            Person[] newArray=new Person[personArray.Length+1];
+            for(int i= 0; i< personArray.Length; i++)
             {
-                newArray[i] = array[i];
+                newArray[i] = personArray[i];
             }
-            newArray[array.Length] = person;
-            array = newArray;
+            newArray[personArray.Length] = person;
+            personArray = newArray;
             return person;
         }
         public void Clear()
         {
-            Array.Clear(array, 0, array.Length);           
+            Array.Clear(personArray, 0, personArray.Length);           
         }
         public Person[] RemovePersonFromPersonArray(Person person)
         {
-            Person[] newPerson = new Person[array.Length - 1];
+            Person[] newPerson = new Person[personArray.Length - 1];
             for (int i = 0; i < Size(); i++)
             {
-                if (array[i] != person)
+                if (personArray[i] != person)
                 {
-                    newPerson[i] = array[i];
+                    newPerson[i] = personArray[i];
                 }
             }
             if (newPerson.Length > 0)

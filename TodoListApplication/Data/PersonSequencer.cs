@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoListApplication.Data
 {
-     class PersonSequencer
+     public class PersonSequencer
     {
         public static int personId { get; set; }
         public int nextPersonId()

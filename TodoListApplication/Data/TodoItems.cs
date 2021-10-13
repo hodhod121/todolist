@@ -7,7 +7,7 @@ using TodoListApplication.Model;
 
 namespace TodoListApplication.Data
 {
-    class TodoItems
+    public class TodoItems
     {
         private static Todo[] todoArray = new Todo[0];
         public int Size()

@@ -14,6 +14,11 @@ namespace TodoListApplication.Model
             FirstName = firstName;
             LastName = lastName;
         }
+
+        public Person()
+        {
+        }
+
         public  int personId  { get;}
         private string firstName;
         private string lastName;
