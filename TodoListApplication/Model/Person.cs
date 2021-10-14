@@ -32,7 +32,7 @@ namespace TodoListApplication.Model
             }
             set
             {
-                if (value != null && value!=string.Empty)
+                if (!(value == null || value==string.Empty))
                 {
                     firstName = value;
                 }             
