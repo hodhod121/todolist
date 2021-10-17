@@ -21,8 +21,7 @@ namespace TodoListApplicationXUnitTests
             //Act
             Todo actual = todoItems.Create("description 1", true, new Person(1, "Ali", "Ezadkhaha"));
             Todo actual2 = todoItems.Create("description 1", true, new Person(1, "Ali", "Ezadkhaha"));
-            // Assert
-            Assert.Equal(expected.todoId, actual.todoId);
+            // Assert           
             Assert.Equal(expected.description, actual.description);
             Assert.Equal(expected.done, actual.done);
             Assert.Equal(expected.assignee.personId, actual.assignee.personId);
@@ -62,10 +61,13 @@ namespace TodoListApplicationXUnitTests
         public void FindById_()
         {
             TodoItems todoItems = new TodoItems();
-            Todo td1 = todoItems.Create("description 1", true, new Person(1, "Ali", "Ezadkhaha"));
-            Todo td2 = todoItems.Create("description 1", true, new Person(1, "Ali", "Ezadkhaha"));
+            Todo td1;
+            Todo td2;
+            Todo[] todoArray;
+            td1 = todoItems.Create("description 1", true, new Person(1, "Ali", "Ezadkhaha"));
+            td2 = todoItems.Create("description 1", true, new Person(2, "Ali", "Ezadkhaha"));
 
-            Todo[] todoArray = new Todo[2] { td1, td2 };
+            todoArray = new Todo[2] { td1, td2 };
             // Arrange           
             Todo expected = todoArray[0];
             //Act

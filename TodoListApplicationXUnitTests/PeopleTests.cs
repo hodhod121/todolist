@@ -58,13 +58,12 @@ namespace TodoListApplicationXUnit
             array1[2] = people.Create(PersonSequencer.nextPersonId(), "gholi", "ghanbar");
             array1[3] = people.Create(PersonSequencer.nextPersonId(), "gholi", "ghanbar");
             people = new People(array1);
-            Person expected = new Person(2, "gholi", "ghanbar");
-            // Act
-            //Person actual = people.Create(PersonSequencer.nextPersonId(), "gholi", "ghanbar");
+            Person expected = new Person(1, "gholi", "ghanbar");
+           
             Person actual = people.FindById(1);
-            //Assert.Equal(expected.personId, actual.personId);
-            Assert.Equal(expected, actual);
-            //Assert.Equal(expected.LastName, actual.LastName);
+            Assert.Equal(expected.personId, actual.personId);
+            Assert.Equal(expected.FirstName, actual.FirstName);
+            Assert.Equal(expected.LastName, actual.LastName);
         }
 
         [Fact]
@@ -81,8 +80,8 @@ namespace TodoListApplicationXUnit
             // Act
             Person actual = people.Create(PersonSequencer.nextPersonId(), "gholi", "ghanbar");
 
-            // Assert
-            Assert.Equal(expected, actual);
+            // Assert    
+            Assert.Equal(expected.FirstName, actual.FirstName);
             Assert.True(expected.LastName == actual.LastName);            
         }
 

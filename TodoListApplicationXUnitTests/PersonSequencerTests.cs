@@ -18,8 +18,8 @@ namespace TodoListApplicationXUnitTests
         [Fact]
         public void People_ReturnsTrue()
         {           
+            Assert.True(PersonSequencer.nextPersonId()== 1);           
             Assert.True(PersonSequencer.reset() == 0);
-            Assert.True(PersonSequencer.nextPersonId() == 1);           
         }
     }
 }
