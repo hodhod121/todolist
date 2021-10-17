@@ -9,8 +9,8 @@ namespace TodoListApplication.Data
      public class TodoSequencer
     {
 
-        public static int todoId { get; set; }
-        public int NextTodoId()
+        private static int todoId;
+        public static int NextTodoId()
         {
             return ++todoId;
         }

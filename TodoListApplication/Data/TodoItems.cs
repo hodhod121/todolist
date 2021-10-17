@@ -27,33 +27,34 @@ namespace TodoListApplication.Data
                     return todoArray[i];
                 }
             }
-            Console.WriteLine("Not found");
             return null;
         }
-        public Todo Create(int id, string description, bool done,Person assignee)
+        public Todo Create(string description, bool done, Person assignee)
         {
-            TodoSequencer ts = new TodoSequencer();
-            Todo todo = new Todo(ts.NextTodoId(), description, done,assignee);
-            Todo[] newArray = new Todo[Size() + 1];
-            for (int i = 0; i < Size(); i++)
+            Todo todo = new Todo(TodoSequencer.NextTodoId(), description, done, assignee);
+            Todo[] newArray = new Todo[todoArray.Length + 1];
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 newArray[i] = todoArray[i];
             }
-            newArray[Size()] = todo;
+            newArray[todoArray.Length] = todo;
             todoArray = newArray;
             return todo;
         }
         public void Clear()
         {
-            Array.Clear(todoArray, 0, Size());
+            Array.Clear(todoArray, 0, todoArray.Length);
         }
         public Todo[] FindByDoneStatus(bool doneStatus)
         {
             int count = 0;
-            for(int i = 0; i < Size(); i++)
+            // Toddo[] result = new Todo[];
+            for (int i = 0; i < Size(); i++)
             {
-                if (todoArray[i].done == true)
+                if (todoArray[i].done == true) // doneStatus..? ist för true
                 {
+                    //Array.Resize(result, result.Length +1);
+                    //result[result.Length +1] = todoArrayi];
                     count++;
                 }
             }
@@ -68,18 +69,33 @@ namespace TodoListApplication.Data
             return newTodo;
         }
         public Todo[] FindByAssignee(int personId)
-        {           
-            for(int i = 0; i < Size(); i++)
+        {
+            int count = 0;
+            for (int i = 0; i < Size(); i++)
             {
-                Todo[] todo=new Todo[0];
                 if (todoArray[i].assignee.personId == personId)
                 {
-                    todo[0] = todoArray[i];
-                    return todo;
+                    count++;
                 }
             }
-            Console.WriteLine("Not found");
-            return null;
+            int counter = 0;
+            Todo[] todo = new Todo[count];
+            for (int i = 0; i < todoArray.Length; i++)
+            {
+                if (todoArray[i].assignee.personId == personId)
+                {
+                    todo[counter] = todoArray[i];
+                    counter++;
+                }
+            }
+            if (todo.Length > 0)
+            {
+                return todo;
+            }
+            else
+            {
+                return null;
+            }
         }
         public Todo[] FindByAssignee(Person assignee)
         {
@@ -112,7 +128,7 @@ namespace TodoListApplication.Data
                 Todo[] todo = new Todo[0];
                 if (todoArray[i].assignee == null)
                 {
-                    newTodo[i] = todoArray[i];                  
+                    newTodo[i] = todoArray[i];
                 }
             }
             if (newTodo.Length > 0)
@@ -123,11 +139,11 @@ namespace TodoListApplication.Data
             {
                 Console.WriteLine("not found");
                 return null;
-            }           
+            }
         }
         public Todo[] RemoveTodoFromTodoArray(Todo todo)
         {
-            Todo[] newTodo = new Todo[Size()-1];            
+            Todo[] newTodo = new Todo[Size() - 1];
             for (int i = 0; i < Size(); i++)
             {
                 if (todoArray[i] != todo)

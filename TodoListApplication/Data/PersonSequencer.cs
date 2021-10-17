@@ -8,8 +8,8 @@ namespace TodoListApplication.Data
 {
      public class PersonSequencer
     {
-        public static int personId { get; set; }
-        public int nextPersonId()
+        private static int personId;
+        public static int nextPersonId()
         {
             return ++personId;
         }

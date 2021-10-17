@@ -17,10 +17,9 @@ namespace TodoListApplicationXUnitTests
         }
         [Fact]
         public void People_ReturnsTrue()
-        {
-            Assert.True(TodoSequencer.todoId== 0);
-            Assert.True(todoSequencer.NextTodoId()== 1);
-            Assert.False(todoSequencer.NextTodoId()== 1);
+        {           
+            Assert.True(TodoSequencer.NextTodoId()== 1);
+            Assert.False(TodoSequencer.NextTodoId()== 1);
             Assert.True(TodoSequencer.Reset() == 0);
         }
     }

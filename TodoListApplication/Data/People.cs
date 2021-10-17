@@ -11,7 +11,7 @@ namespace TodoListApplication.Data
       public class People
     {
        
-        private static Person[] personArray = new Person[0];
+        public static Person[] personArray = new Person[0];
 
         public People(Person[] array)
         {
@@ -37,9 +37,8 @@ namespace TodoListApplication.Data
             return null;
         }
         public Person Create(int id,string first_name,string last_name)
-        {
-            PersonSequencer ps = new PersonSequencer();
-            Person person=new Person(ps.nextPersonId(), first_name, last_name);
+        {           
+            Person person=new Person(PersonSequencer.nextPersonId(), first_name, last_name);
             Person[] newArray=new Person[personArray.Length+1];
             for(int i= 0; i< personArray.Length; i++)
             {
@@ -51,7 +50,7 @@ namespace TodoListApplication.Data
         }
         public void Clear()
         {
-            Array.Clear(personArray, 0, personArray.Length);           
+            personArray = new Person[0];           
         }
         public Person[] RemovePersonFromPersonArray(Person person)
         {
