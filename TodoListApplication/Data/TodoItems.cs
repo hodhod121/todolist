@@ -20,7 +20,7 @@ namespace TodoListApplication.Data
         }
         public Todo FindById(int todoId)
         {
-            for (int i = 0; i < Size(); i++)
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 if (todoArray[i].todoId == todoId)
                 {
@@ -49,7 +49,7 @@ namespace TodoListApplication.Data
         {
             int count = 0;
             // Toddo[] result = new Todo[];
-            for (int i = 0; i < Size(); i++)
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 if (todoArray[i].done == true) // doneStatus..? ist för true
                 {
@@ -59,7 +59,7 @@ namespace TodoListApplication.Data
                 }
             }
             Todo[] newTodo = new Todo[count];
-            for (int i = 0; i < Size(); i++)
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 if (todoArray[i].done == true)
                 {
@@ -71,7 +71,7 @@ namespace TodoListApplication.Data
         public Todo[] FindByAssignee(int personId)
         {
             int count = 0;
-            for (int i = 0; i < Size(); i++)
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 if (todoArray[i].assignee.personId == personId)
                 {
@@ -99,7 +99,7 @@ namespace TodoListApplication.Data
         }
         public Todo[] FindByAssignee(Person assignee)
         {
-            for (int i = 0; i < Size(); i++)
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 Todo[] todo = new Todo[0];
                 if (todoArray[i].assignee == assignee)
@@ -114,7 +114,7 @@ namespace TodoListApplication.Data
         public Todo[] FindUnassignedTodoItems()
         {
             int count = 0;
-            for (int i = 0; i < Size(); i++)
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 // null?
                 if (todoArray[i].assignee == null)
@@ -123,7 +123,7 @@ namespace TodoListApplication.Data
                 }
             }
             Todo[] newTodo = new Todo[count];
-            for (int i = 0; i < Size(); i++)
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 Todo[] todo = new Todo[0];
                 if (todoArray[i].assignee == null)
@@ -143,8 +143,8 @@ namespace TodoListApplication.Data
         }
         public Todo[] RemoveTodoFromTodoArray(Todo todo)
         {
-            Todo[] newTodo = new Todo[Size() - 1];
-            for (int i = 0; i < Size(); i++)
+            Todo[] newTodo = new Todo[todoArray.Length - 1];
+            for (int i = 0; i < todoArray.Length; i++)
             {
                 if (todoArray[i] != todo)
                 {

@@ -55,7 +55,7 @@ namespace TodoListApplication.Data
         public Person[] RemovePersonFromPersonArray(Person person)
         {
             Person[] newPerson = new Person[personArray.Length - 1];
-            for (int i = 0; i < Size(); i++)
+            for (int i = 0; i < personArray.Length; i++)
             {
                 if (personArray[i] != person)
                 {
